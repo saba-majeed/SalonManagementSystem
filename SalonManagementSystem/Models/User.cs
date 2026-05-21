@@ -1,16 +1,16 @@
 ﻿using System;
 
 namespace SalonManagementSystem.Models
-{
-    /// <summary>
-    /// User model - login aur role management ke liye
-    /// </summary>
+{   
+      // User Model - Stores logged in user's information
+     // This model is used to carry user data between database and forms
+  
     public class User
     {
-        public int UserID { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }      // "Admin" ya "Staff"
-        public DateTime CreatedAt { get; set; }
+        public int UserID { get; set; }  // Primary key
+        public string Username { get; set; }  // Login username
+        public string Password { get; set; }  // Login password
+        public string Role { get; set; }  // Admin / Staff / Customer
+        public DateTime CreatedAt { get; set; }  // Account creation date
     }
 }

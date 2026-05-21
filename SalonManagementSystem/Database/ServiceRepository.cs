@@ -5,14 +5,9 @@ using SalonManagementSystem.Models;
 
 namespace SalonManagementSystem.Database
 {
-    /// <summary>
-    /// Salon services ke CRUD operations (haircut, facial etc.)
-    /// </summary>
     public class ServiceRepository
     {
-        /// <summary>
-        /// Saari services laata hai naam ke order mein
-        /// </summary>
+        // Returns all services ordered by name
         public List<Service> GetAll()
         {
             var list = new List<Service>();
@@ -41,9 +36,7 @@ namespace SalonManagementSystem.Database
             return list;
         }
 
-        /// <summary>
-        /// Nayi service add karta hai
-        /// </summary>
+        // Adds a new service to database
         public bool Add(Service s)
         {
             try
@@ -68,9 +61,7 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Service update karta hai
-        /// </summary>
+        // Updates existing service info
         public bool Update(Service s)
         {
             try
@@ -98,9 +89,7 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Service delete karta hai ID se
-        /// </summary>
+        // Deletes a service by ID
         public bool Delete(int serviceID)
         {
             try

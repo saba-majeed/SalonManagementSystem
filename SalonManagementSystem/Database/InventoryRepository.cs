@@ -5,14 +5,9 @@ using SalonManagementSystem.Models;
 
 namespace SalonManagementSystem.Database
 {
-    /// <summary>
-    /// Inventory (products/stock) ke CRUD operations
-    /// </summary>
     public class InventoryRepository
     {
-        /// <summary>
-        /// Saare inventory items laata hai naam ke order mein
-        /// </summary>
+        // Returns all inventory items ordered by name
         public List<Inventory> GetAll()
         {
             var list = new List<Inventory>();
@@ -42,9 +37,7 @@ namespace SalonManagementSystem.Database
             return list;
         }
 
-        /// <summary>
-        /// Naya inventory item add karta hai
-        /// </summary>
+        // Adds a new inventory item to database
         public bool Add(Inventory item)
         {
             try
@@ -69,9 +62,7 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Item update karta hai (stock, price etc.)
-        /// </summary>
+        // Updates existing item info (stock, price etc.)
         public bool Update(Inventory item)
         {
             try
@@ -99,9 +90,7 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Item delete karta hai ID se
-        /// </summary>
+        // Deletes an item by ID
         public bool Delete(int itemID)
         {
             try

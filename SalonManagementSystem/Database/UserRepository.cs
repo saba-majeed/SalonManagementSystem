@@ -4,16 +4,10 @@ using SalonManagementSystem.Models;
 
 namespace SalonManagementSystem.Database
 {
-    /// <summary>
-    /// User ke database operations
-    /// Sirf login check karna abhi ke liye
-    /// </summary>
     public class UserRepository
     {
-        /// <summary>
-        /// Username aur password match karta hai database se
-        /// Return: User object (match hua) ya null (wrong credentials)
-        /// </summary>
+        // Checks username & password in database
+        // Returns User object if match found, null if not
         public User Login(string username, string password)
         {
             User user = null;
@@ -24,7 +18,7 @@ namespace SalonManagementSystem.Database
                 {
                     conn.Open();
 
-                    // Parameterized query - SQL injection se bachata hai
+                    // Parameterized query - prevents SQL injection
                     string query = "SELECT * FROM Users WHERE Username=@username AND Password=@password";
 
                     using (var cmd = new MySqlCommand(query, conn))
@@ -34,9 +28,9 @@ namespace SalonManagementSystem.Database
 
                         using (var reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read())
+                            if (reader.Read()) // Row found = credentials correct
                             {
-                                // Credentials match - user object banao
+                                // Build user object from database row
                                 user = new User
                                 {
                                     UserID = Convert.ToInt32(reader["UserID"]),
@@ -46,14 +40,14 @@ namespace SalonManagementSystem.Database
                             }
                         }
                     }
-                }
+                } // Connection auto-closes here
             }
             catch (Exception ex)
             {
                 throw new Exception("Login error: " + ex.Message);
             }
 
-            return user; // null = login fail
+            return user; // null = login failed
         }
     }
 }

@@ -5,14 +5,9 @@ using SalonManagementSystem.Models;
 
 namespace SalonManagementSystem.Database
 {
-    /// <summary>
-    /// Staff ke saare CRUD database operations
-    /// </summary>
     public class StaffRepository
     {
-        /// <summary>
-        /// Sirf active staff laata hai (IsActive = 1)
-        /// </summary>
+        // Returns only active staff members (IsActive = 1)
         public List<Staff> GetAll()
         {
             var list = new List<Staff>();
@@ -43,9 +38,7 @@ namespace SalonManagementSystem.Database
             return list;
         }
 
-        /// <summary>
-        /// Naya staff member add karta hai
-        /// </summary>
+        // Adds a new staff member to database
         public bool Add(Staff s)
         {
             try
@@ -71,9 +64,7 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Staff member ki info update karta hai
-        /// </summary>
+        // Updates existing staff member info
         public bool Update(Staff s)
         {
             try
@@ -101,10 +92,8 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Soft delete - staff ko actually delete nahi karta
-        /// Sirf IsActive = 0 kar deta hai (data safe rehta hai)
-        /// </summary>
+        // Soft delete - sets IsActive=0 instead of removing record
+        // Keeps data safe for old appointment history
         public bool Delete(int staffID)
         {
             try

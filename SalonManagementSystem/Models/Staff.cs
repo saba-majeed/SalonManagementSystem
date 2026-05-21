@@ -3,7 +3,7 @@
 namespace SalonManagementSystem.Models
 {
     /// <summary>
-    /// Staff model - salon employees ki info
+    /// Staff model - salon employees  info
     /// </summary>
     public class Staff
     {

@@ -3,27 +3,19 @@ using MySql.Data.MySqlClient;
 
 namespace SalonManagementSystem.Database
 {
-    /// <summary>
-    /// Database connection helper class
-    /// Yahan se poori application MySQL se connect hoti hai
-    /// </summary>
     public class DatabaseHelper
     {
-        // ⚠️ IMPORTANT: Apna MySQL root password yahan likho
+        // ⚠️ MySQL connection string - update password if changed
         private static string connectionString =
             "Server=localhost;Database=SalonManagementDB;Uid=root;Pwd=admin1234;";
 
-        /// <summary>
-        /// Naya MySQL connection object return karta hai
-        /// </summary>
+        // Returns a new MySQL connection object
         public static MySqlConnection GetConnection()
         {
             return new MySqlConnection(connectionString);
         }
 
-        /// <summary>
-        /// Connection test karta hai - true aaye toh database connected hai
-        /// </summary>
+        // Tests database connection - returns true if connected
         public static bool TestConnection()
         {
             try

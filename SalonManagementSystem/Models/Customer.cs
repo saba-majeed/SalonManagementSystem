@@ -3,7 +3,7 @@
 namespace SalonManagementSystem.Models
 {
     /// <summary>
-    /// Customer model - salon aane wale logo ki info
+    /// Customer model - customer info
     /// </summary>
     public class Customer
     {

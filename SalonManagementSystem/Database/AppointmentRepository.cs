@@ -5,16 +5,11 @@ using SalonManagementSystem.Models;
 
 namespace SalonManagementSystem.Database
 {
-    /// <summary>
-    /// Appointments ke CRUD operations
-    /// Customer, Staff, Service ka JOIN bhi karta hai display ke liye
-    /// </summary>
     public class AppointmentRepository
     {
-        /// <summary>
-        /// Saare appointments laata hai - customer/staff/service name ke saath
-        /// Latest appointment pehle aata hai
-        /// </summary>
+        // Returns all appointments with customer, staff and service names
+        // Uses JOIN to get names instead of just IDs
+        // Latest appointment shown first
         public List<Appointment> GetAll()
         {
             var list = new List<Appointment>();
@@ -23,7 +18,7 @@ namespace SalonManagementSystem.Database
             {
                 conn.Open();
 
-                // JOIN se customer, staff, service ke naam bhi aa jayenge
+                // JOIN with Customers, Staff and Services to get their names
                 string query = @"SELECT a.*,
                                         c.FullName    AS CustomerName,
                                         s.FullName    AS StaffName,
@@ -58,9 +53,7 @@ namespace SalonManagementSystem.Database
             return list;
         }
 
-        /// <summary>
-        /// Naya appointment book karta hai
-        /// </summary>
+        // Books a new appointment
         public bool Add(Appointment a)
         {
             try
@@ -88,10 +81,7 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Appointment ka status update karta hai
-        /// (Pending → Completed ya Cancelled)
-        /// </summary>
+        // Updates appointment status (Pending → Completed or Cancelled)
         public bool UpdateStatus(int appointmentID, string status)
         {
             try
@@ -113,9 +103,7 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Appointment delete karta hai
-        /// </summary>
+        // Deletes an appointment by ID
         public bool Delete(int appointmentID)
         {
             try

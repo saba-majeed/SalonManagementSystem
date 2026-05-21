@@ -15,7 +15,7 @@ namespace SalonManagementSystem.Models
         public string Status { get; set; }  // Pending / Completed / Cancelled
         public string Notes { get; set; }
 
-        // Ye fields database JOIN se aate hain - display ke liye
+        // these fields come from database JOIN  - for  display
         public string CustomerName { get; set; }
         public string StaffName { get; set; }
         public string ServiceName { get; set; }

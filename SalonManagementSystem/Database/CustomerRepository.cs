@@ -5,14 +5,9 @@ using SalonManagementSystem.Models;
 
 namespace SalonManagementSystem.Database
 {
-    /// <summary>
-    /// Customer ke saare CRUD database operations
-    /// </summary>
     public class CustomerRepository
     {
-        /// <summary>
-        /// Database se saare customers laata hai - naam ke order mein
-        /// </summary>
+        // Returns all customers ordered by name
         public List<Customer> GetAll()
         {
             var list = new List<Customer>();
@@ -42,10 +37,8 @@ namespace SalonManagementSystem.Database
             return list;
         }
 
-        /// <summary>
-        /// Naya customer database mein add karta hai
-        /// Return: true = success, false = error
-        /// </summary>
+        // Adds a new customer to database
+        // Returns true = success, false = error
         public bool Add(Customer c)
         {
             try
@@ -70,9 +63,7 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Existing customer ki info update karta hai
-        /// </summary>
+        // Updates existing customer info
         public bool Update(Customer c)
         {
             try
@@ -100,9 +91,7 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Customer ko ID se delete karta hai
-        /// </summary>
+        // Deletes a customer by ID
         public bool Delete(int customerID)
         {
             try
@@ -123,9 +112,8 @@ namespace SalonManagementSystem.Database
             catch { return false; }
         }
 
-        /// <summary>
-        /// Name ya phone number se customer search karta hai
-        /// </summary>
+        // Searches customers by name or phone number
+        // % allows partial match e.g. "ali" finds "Ali Ahmed"
         public List<Customer> Search(string keyword)
         {
             var list = new List<Customer>();
@@ -137,7 +125,6 @@ namespace SalonManagementSystem.Database
 
                 using (var cmd = new MySqlCommand(query, conn))
                 {
-                    // % lagane se partial match bhi milta hai
                     cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
 
                     using (var reader = cmd.ExecuteReader())
